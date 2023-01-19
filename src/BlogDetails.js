@@ -13,7 +13,7 @@ const BlogDetails = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    fetch("http://localhost:8000/blogs/" + blog.id, {
+    fetch("http://localhost:8000/blogs/" + id, {
       method: "DELETE",
     }).then(() => navigate("/"));
   };
@@ -24,9 +24,9 @@ const BlogDetails = () => {
       {error && <div> {error} </div>}
       {blog && (
         <article>
-          <h2>{blog.title}</h2>
-          <p>Written By : {blog.author}</p>
-          <div>{blog.body}</div>
+          <h2>{blog.blog.title}</h2>
+          <p>Written By : {blog.blog.snippet}</p>
+          <div>{blog.blog.body}</div>
           <button onClick={handleClick}> Delete Article</button>
         </article>
       )}
